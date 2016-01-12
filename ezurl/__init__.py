@@ -88,5 +88,5 @@ class Url(object):
         """
         Allows for fragments at the end of the url
         """
-        self.fragmenttrack="#{}".format("text")
+        self.fragmenttrack="#{}".format(text)
         return self

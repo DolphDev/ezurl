@@ -20,6 +20,11 @@ class url_correct_test(unittest.TestCase):
         test_url = Url("myurl.com").query(a=1)
         self.assertEqual(str(test_url), "https://myurl.com?a=1")
 
+    def test_url_query_repeat_queary(self):
+        test_url = Url("myurl.com").query(a=2).query(a=1)
+        self.assertEqual(str(test_url), "https://myurl.com?a=1")
+
+
     def test_url_query_double_query(self):
         test_url = Url("myurl.com").query(a=1).query(b=10)
         self.assertEqual(str(test_url), "https://myurl.com?a=1&b=10")

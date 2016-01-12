@@ -59,7 +59,7 @@ class Url(object):
         Pages takes *args and adds pages in order
         """
         for arg in args:
-            self.pages.append(arg)
+            self.pagestrack.append(arg)
         return self
 
     def query(self, listdelimiter="+", **kwargs):

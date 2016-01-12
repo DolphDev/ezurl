@@ -66,8 +66,7 @@ class Url(object):
         """
         Url queries
 
-        :param listdelimiter: Specifies what list delimiter should be in
-        the event a iterable is present.
+        :param listdelimiter: Specifies what list delimiter should be
 
         Kwargs (Since its a dictionary) are not ordered. You must call the
         method again if you absolutely need one query

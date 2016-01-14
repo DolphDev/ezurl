@@ -26,6 +26,7 @@ class Url(object):
         self.querydelimiter = querydelimiter
 
     def __repr__(self):
+        """REPR Implementation"""
         return "<url:{url}>".format(url=str(self))
 
     def __str__(self):
@@ -38,12 +39,16 @@ class Url(object):
         )
 
     def _page_gen(self):
+        """
+        Generates The String for pages
+        """
         track = ""
         for page in self.pagestrack:
             track += "/{page}".format(page=page)
         return track
 
     def _query_gen(self):
+        """Generates The String for queries"""
         querylst = [{x:self.querytrack[x]} for x in self.querytrack]
         if not bool(self.querytrack):
             return ""

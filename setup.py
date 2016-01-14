@@ -33,7 +33,7 @@ SOFTWARE.
 
 from setuptools import setup
 setup(name='ezurl',
-      version="0.0.1.16",
+      version="0.0.2.17",
       description='URL Generation for Python',
       author='Joshua Walters',
       author_email='therealdolphman@gmail.com',

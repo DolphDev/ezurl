@@ -6,18 +6,21 @@ class Url(object):
     This class allows more flexible generation of URLS.
     This prevents the mindless manipulation string that occur
     in projects that require generation of a wide range of urls
+
     """
 
     def __init__(self, hostname, scheme="https", querydelimiter="&"):
         """
         Initializes the Url object
 
-        param
+        :param hostname: The hostname of the Url
+        :param scheme: Optional Scheme selection. Defaults to https
+        :param querydelimiter: What the query delimiter is for this URL
 
         """
         self.scheme = scheme
         self.hostname = hostname
-        self.pagestrack = []
+        self.pagestrack = list()
         self.querytrack = OrderedDict()
         self.fragmenttrack = ""
         self.querydelimiter = querydelimiter

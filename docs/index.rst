@@ -1,6 +1,6 @@
 .. _main_page:
 
-WeThePeople
+ezurl
 ===================================
 
 Content Pages

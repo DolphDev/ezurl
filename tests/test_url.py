@@ -50,7 +50,7 @@ class url_generation_equalto(unittest.TestCase):
 
     def test_query_gen_equalto(self):
         test_url = Url("myurl.com").query(a=[0,1])
-        self.assertEqual(test_url._query_gen(), "?a=0+1")
+        self.assertEqual(test_url._query_gen(), "a=0+1")
 
     def test_querytrack_equalto(self):
         test_url = Url("myurl.com").query(a=[0,1])

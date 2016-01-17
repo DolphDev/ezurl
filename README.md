@@ -5,5 +5,31 @@ ezurl
 
 Easy URL generation for Python
 
+This Library is simply for Dynamically Generating URLs. This Library was originally included in my WeThePeople Module, wowever I thought it would be better for it to be a seperate library.
 
-######Note: This is not for URL validation. This is simply a url generation library.
+ezurl allows simple stuff like this
+
+    from ezurl import Url
+    #I want https://reddit.com/r/python
+    url = Url("reddit.com")
+    url.page("r", "python")
+    print(url) # https://reddit.com/r/python
+
+while still allowing more complex urls like this
+
+    from ezurl import Url
+    #I want https://example.com/api/list/ExampleObject?name=Cool+Cat&createdby=Dolphin&ispublic=true
+    url = Url("example.com")
+    url.page("api", "list", "ExampleObject")
+    url.query(name=["Cool"+"Cat"], createdby="Dolphin", ispublic="true")
+    print(url) #Will be equivalent to https://example.com/api/list/ExampleObject?name=Cool+Cat&createdby=Dolphin&ispublic=true
+
+It also supports one liners! (Using the example above)
+
+    from ezurl import Url
+    print(Url("example.com").page("api", "list", "ExampleObject").query(name=["Cool", "Cat"], createdby="Dolphin", ispublic="true"))
+
+ezurl powers [pynationstates](https://github.com/Dolphman/Pynationstates) and [WeThePeople](ttps://github.com/Dolphman/wethepeople)
+
+
+######Note: This is not for URL validation nor URL Manipulation. This is simply a url generation library.

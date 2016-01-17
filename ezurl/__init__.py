@@ -154,5 +154,3 @@ class Url(object):
         """
         self.fragmenttrack = text
         return self
-
-print(Url("google.com").page("10").query(hello="world", tupac="alive"))

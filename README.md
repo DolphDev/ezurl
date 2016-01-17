@@ -29,7 +29,7 @@ It also supports one liners! (Using the example above)
     from ezurl import Url
     print(Url("example.com").page("api", "list", "ExampleObject").query(name=["Cool", "Cat"], createdby="Dolphin", ispublic="true"))
 
-ezurl powers [pynationstates](https://github.com/Dolphman/Pynationstates) and [WeThePeople](ttps://github.com/Dolphman/wethepeople)
+ezurl powers [pynationstates](https://github.com/Dolphman/Pynationstates) and [WeThePeople](https://github.com/Dolphman/wethepeople)
 
 
 ######Note: This is not for URL validation nor URL Manipulation. This is simply a url generation library.

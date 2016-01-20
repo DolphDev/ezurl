@@ -53,7 +53,7 @@ class Url(object):
     @property
     def pages(self):
         """Returns a list of pages"""
-        return self.pages
+        return self.pagestrack
 
     @property
     def path(self):

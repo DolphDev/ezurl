@@ -64,6 +64,47 @@ class url_generation_equalto(unittest.TestCase):
         test_url = Url("myurl.com").page("HELLO")
         self.assertEqual(test_url.pagestrack, ["HELLO"])
 
+class url_properties_test(unittest.TestCase):
+
+    def test_url_urlparse_equalto(self):
+        try: from urlparse import urlparse #PY2
+        except ImportError: from urllib.parse import urlparse #PY3
+        test_url = Url("myurl.com")
+        self.assertEqual(urlparse(str(test_url)), test_url.url)
+
+    def test_url_unurlparse_equalto(self):
+        try: from urlparse import urlunparse #PY2
+        except ImportError: from urllib.parse import urlunparse #PY3
+        test_url = Url("myurl.com")
+        self.assertEqual(urlunparse((test_url.schemetrack,
+                        test_url.hostnametrack,
+                        test_url._page_gen(),
+                        "",
+                        test_url._query_gen(),
+                        test_url.fragmenttrack)), str(test_url))
+
+    def test_pages_equalto(self):
+        test_url = Url("myurl.com").page("HELLO")
+        self.assertEqual(test_url.pages, test_url.pagestrack)
+
+    def test_path_equalto(self):
+        test_url = Url("myurl.com").page("HELLO")
+        self.assertEqual(test_url.path, test_url.url.path)
+
+    def test_netloc_equalto(self):
+        test_url = Url("myurl.com")
+        self.assertEqual(test_url.netloc, test_url.hostnametrack)
+
+    def test_scheme_equalto(self):
+        test_url = Url("myurl.com")
+        self.assertEqual(test_url.scheme, test_url.schemetrack, "https")
+
+    def test_page_equalto(self):
+        test_url = Url("myurl.com").page("HELLO")
+        self.assertEqual(test_url.pagestrack, ["HELLO"])
+
+
+
 class url_attribute_type_test(unittest.TestCase):
 
     def test_querytrack_type(self):

@@ -63,10 +63,6 @@ class Url(object):
         return self.url.path
 
     @property
-    def params(self):
-        return self.url.params
-
-    @property
     def queries_dict(self):
         return self.querytrack
 

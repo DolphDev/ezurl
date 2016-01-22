@@ -5,7 +5,7 @@ ezurl
 
 Easy URL generation for Python
 
-This Library is simply for Dynamically Generating URLs. This Library was originally included in my WeThePeople Module, wowever I thought it would be better for it to be a seperate library.
+This Library is simply for dynamically generating URLs. This Library was originally included in my WeThePeople Module, however I thought it would be better for it to be a seperate library.
 
 ezurl allows simple stuff like this
 

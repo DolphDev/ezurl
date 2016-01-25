@@ -3,9 +3,11 @@ from collections import OrderedDict
 try:
     from urllib.parse import urlunparse
     from urllib.parse import urlparse
+    from .urllib96 import urlencode
 except ImportError:
     from urlparse import urlunparse
     from urlparse import urlparse
+    from .urllib96 import urlencode
 
 
 
@@ -95,23 +97,9 @@ class Url(object):
             track += "/{page}".format(page=page)
         return track
 
-    def _query_gen(self):
+    def _query_gen(self, safe="+"):
         """Generates The String for queries"""
-        querylst = [{x: self.querytrack[x]} for x in self.querytrack]
-        if not bool(self.querytrack):
-            return ""
-        track = "{name}={val}".format(
-            name=list(querylst[0].keys())[0],
-            val=querylst[0][list(querylst[0].keys())[0]]
-        )
-        if len(querylst) > 1:
-            for x in querylst[1:]:
-                track += "{delimiter}{name}={val}".format(
-                    delimiter=self.querydelimiter,
-                    name=list(x.keys())[0],
-                    val=x[list(x.keys())[0]]
-                )
-        return track
+        return urlencode(self.querytrack, safe=safe, querydelimiter=self.querydelimiter)
 
     def page(self, *args):
         """

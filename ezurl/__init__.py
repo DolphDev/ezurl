@@ -116,6 +116,7 @@ class Url(object):
         Url queries
 
         :param listdelimiter: Specifies what list delimiter should be
+        :param safe: string that includes all the characters that should not be ignored
 
         Kwargs (Since its a dictionary) are not ordered. You must call the
         method again if you absolutely need one query

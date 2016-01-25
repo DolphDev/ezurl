@@ -1,10 +1,10 @@
 try:
     from urllib.parse import *
 except ImportError:
-    from urlparse.urlparse import *
+    from urllib import quote_plus
 
 """
-Very minor changes to the urllib.parse urlencode
+Very minor changes to the urllib.parse urlencode, urll(py2)
 """
 
 pythonv = 2 if isinstance(range(1), list) else 3

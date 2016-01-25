@@ -3,10 +3,12 @@ from collections import OrderedDict
 try:
     from urllib.parse import urlunparse
     from urllib.parse import urlparse
+    from urllib.parse import quote_plus
     from .urllib96 import urlencode
 except ImportError:
     from urlparse import urlunparse
     from urlparse import urlparse
+    from urllib import quote_plus
     from .urllib96 import urlencode
 
 
@@ -109,7 +111,7 @@ class Url(object):
             self.pagestrack.append(arg)
         return self
 
-    def query(self, listdelimiter="+", **kwargs):
+    def query(self, listdelimiter="+", safe="",**kwargs):
         """
         Url queries
 
@@ -125,7 +127,7 @@ class Url(object):
             if (isinstance(kwargs[arg], list)
                     or isinstance(kwargs[arg], tuple)
                     or isinstance(kwargs[arg], set)):
-                items = [str(x) for x in kwargs[arg]]
+                items = [quote_plus(str(x), safe=safe) for x in kwargs[arg]]
                 self.querytrack.update({arg: listdelimiter.join(items)})
             else:
                 self.querytrack.update({arg: kwargs.get(arg)})

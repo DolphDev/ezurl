@@ -153,4 +153,4 @@ def urlencode3(query, doseq=False, safe="", encoding=None, errors=None,
                         l.append(k + '=' + elt)
     return querydelimiter.join(l)
 
-urlencode = urlencode3 if pythonv == 3 else urlencod2
+urlencode = urlencode3 if pythonv == 3 else urlencode2

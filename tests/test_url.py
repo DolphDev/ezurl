@@ -31,9 +31,9 @@ class url_correct_test(unittest.TestCase):
         test_url.page("WORLD")
         self.assertEqual(str(test_url), "https://myurl.com/HELLO/WORLD")
 
-    def test_url_querytrack_multi_query(self):
+    def test_url___query___multi_query(self):
         test_url = Url("myurl.com").query(a="TEST", b="TEST")
-        self.assertEqual(dict(test_url.querytrack), {"a":"TEST", "b":"TEST"})
+        self.assertEqual(dict(test_url.__query__), {"a":"TEST", "b":"TEST"})
 
 
 class url_generation_test_type(unittest.TestCase):
@@ -52,9 +52,9 @@ class url_generation_equalto(unittest.TestCase):
         test_url = Url("myurl.com").query(a=[0,1])
         self.assertEqual(test_url._query_gen(), "a=0+1")
 
-    def test_querytrack_equalto(self):
+    def test___query___equalto(self):
         test_url = Url("myurl.com").query(a=[0,1])
-        self.assertEqual(test_url.querytrack, OrderedDict({"a":"0+1"}))
+        self.assertEqual(test_url.__query__, OrderedDict({"a":"0+1"}))
 
     def test_page_gen_equalto(self):
         test_url = Url("myurl.com").page("HELLO")
@@ -62,7 +62,7 @@ class url_generation_equalto(unittest.TestCase):
 
     def test_page_equalto(self):
         test_url = Url("myurl.com").page("HELLO")
-        self.assertEqual(test_url.pagestrack, ["HELLO"])
+        self.assertEqual(test_url.__pages__, ["HELLO"])
 
 class url_properties_test(unittest.TestCase):
 
@@ -76,16 +76,16 @@ class url_properties_test(unittest.TestCase):
         try: from urlparse import urlunparse #PY2
         except ImportError: from urllib.parse import urlunparse #PY3
         test_url = Url("myurl.com")
-        self.assertEqual(urlunparse((test_url.schemetrack,
-                        test_url.hostnametrack,
+        self.assertEqual(urlunparse((test_url.__scheme__,
+                        test_url.__hostname__,
                         test_url._page_gen(),
                         "",
                         test_url._query_gen(),
-                        test_url.fragmenttrack)), str(test_url))
+                        test_url.__fragment__)), str(test_url))
 
     def test_pages_equalto(self):
         test_url = Url("myurl.com").page("HELLO")
-        self.assertEqual(test_url.pages, test_url.pagestrack)
+        self.assertEqual(test_url.pages, test_url.__pages__)
 
     def test_path_equalto(self):
         test_url = Url("myurl.com").page("HELLO")
@@ -93,29 +93,29 @@ class url_properties_test(unittest.TestCase):
 
     def test_netloc_equalto(self):
         test_url = Url("myurl.com")
-        self.assertEqual(test_url.netloc, test_url.hostnametrack)
+        self.assertEqual(test_url.netloc, test_url.__hostname__)
 
     def test_scheme_equalto(self):
         test_url = Url("myurl.com")
-        self.assertEqual(test_url.scheme, test_url.schemetrack, "https")
+        self.assertEqual(test_url.scheme, test_url.__scheme__, "https")
 
     def test_page_equalto(self):
         test_url = Url("myurl.com").page("HELLO")
-        self.assertEqual(test_url.pagestrack, ["HELLO"])
+        self.assertEqual(test_url.__pages__, ["HELLO"])
 
 
 
 class url_attribute_type_test(unittest.TestCase):
 
-    def test_querytrack_type(self):
+    def test___query___type(self):
         test_url = Url("")
-        self.assertIsInstance(test_url.querytrack, OrderedDict)
+        self.assertIsInstance(test_url.__query__, OrderedDict)
 
     def test_pagetrack_type(self):
         test_url = Url("")
-        self.assertIsInstance(test_url.pagestrack, list)
+        self.assertIsInstance(test_url.__pages__, list)
 
     def test_fragement_type(self):
         test_url = Url("")
-        self.assertIsInstance(test_url.fragmenttrack, str)
+        self.assertIsInstance(test_url.__fragment__, str)
 

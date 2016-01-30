@@ -1,7 +1,7 @@
 try:
     from urllib.parse import *
 except ImportError:
-    from urllib import quote_plus
+    from urllib import quote_plusb
 
 """
 Very minor changes to the urllib.parse urlencode, urll(py2)

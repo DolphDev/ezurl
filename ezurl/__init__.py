@@ -4,12 +4,12 @@ try:
     from urllib.parse import urlunparse
     from urllib.parse import urlparse
     from urllib.parse import quote_plus
-    from .urllib96 import urlencode
+    from .ezurllib import urlencode
 except ImportError:
     from urlparse import urlunparse
     from urlparse import urlparse
     from urllib import quote_plus
-    from .urllib96 import urlencode
+    from .ezurllib import urlencode
 
 
 
@@ -31,17 +31,17 @@ class Url(object):
         :param querydelimiter: What the query delimiter is for this URL
 
         """
-        self.schemetrack = scheme
-        self.hostnametrack = hostname
-        self.pagestrack = list()
-        self.querytrack = OrderedDict()
-        self.fragmenttrack = ""
-        self.querydelimiter = querydelimiter
+        self.__scheme__ = scheme
+        self.__hostname__ = hostname
+        self.__pages__ = list()
+        self.__query__ = OrderedDict()
+        self.__fragment__ = ""
+        self.__querydelimiter__ = querydelimiter
 
     def __repr__(self):
         """REPR Implementation"""
         return "<url:{url}>".format(url=str(self))
-    
+
     @property
     def url(self):
         return urlparse(str(self))
@@ -57,7 +57,7 @@ class Url(object):
     @property
     def pages(self):
         """Returns a list of pages"""
-        return self.pagestrack
+        return self.__pages__
 
     @property
     def path(self):
@@ -68,7 +68,7 @@ class Url(object):
 
     @property
     def queries_dict(self):
-        return self.querytrack
+        return self.__query__
 
     @property
     def queries(self):
@@ -83,32 +83,32 @@ class Url(object):
         """
         return str object
         """
-        return urlunparse((self.schemetrack,
-                        self.hostnametrack,
+        return urlunparse((self.__scheme__,
+                        self.__hostname__,
                         self._page_gen(),
                         "",
                         self._query_gen(),
-                        self.fragmenttrack))
+                        self.__fragment__))
 
     def _page_gen(self):
         """
         Generates The String for pages
         """
         track = ""
-        for page in self.pagestrack:
+        for page in self.__pages__:
             track += "/{page}".format(page=page)
         return track
 
     def _query_gen(self, safe="+"):
         """Generates The String for queries"""
-        return urlencode(self.querytrack, safe=safe, querydelimiter=self.querydelimiter)
+        return urlencode(self.__query__, safe=safe, querydelimiter=self.__querydelimiter__)
 
     def page(self, *args):
         """
         Pages takes *args and adds pages in order
         """
         for arg in args:
-            self.pagestrack.append(arg)
+            self.__pages__.append(arg)
         return self
 
     def query(self, listdelimiter="+", safe="",**kwargs):
@@ -129,9 +129,9 @@ class Url(object):
                     or isinstance(kwargs[arg], tuple)
                     or isinstance(kwargs[arg], set)):
                 items = [quote_plus(str(x), safe=safe) for x in kwargs[arg]]
-                self.querytrack.update({arg: listdelimiter.join(items)})
+                self.__query__.update({arg: listdelimiter.join(items)})
             else:
-                self.querytrack.update({arg: kwargs.get(arg)})
+                self.__query__.update({arg: quote_plus(kwargs.get(arg), safe=safe)})
 
         return self
 

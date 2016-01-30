@@ -131,7 +131,7 @@ class Url(object):
                 items = [quote_plus(str(x), safe=safe) for x in kwargs[arg]]
                 self.__query__.update({arg: listdelimiter.join(items)})
             else:
-                self.__query__.update({arg: quote_plus(kwargs.get(arg), safe=safe)})
+                self.__query__.update({arg: kwargs.get(arg)})
 
         return self
 

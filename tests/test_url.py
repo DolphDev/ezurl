@@ -43,6 +43,11 @@ class url_correct_test(unittest.TestCase):
         test_url.scheme("http")
         self.assertEqual(str(test_url), "http://myurl.com")
 
+    def test_fragment_scheme(self):
+        test_url = Url("myurl.com").fragment("file1")
+        self.assertEqual(str(test_url), "https://myurl.com#file1")
+        test_url.fragment("file2")
+        self.assertEqual(str(test_url), "https://myurl.com#file2")
 
     def test_url___query___multi_query(self):
         test_url = Url("myurl.com").query(a="TEST", b="TEST")
@@ -118,6 +123,8 @@ class url_properties_test(unittest.TestCase):
 
 
 
+
+
 class url_attribute_type_test(unittest.TestCase):
 
     def test___query___type(self):
@@ -131,4 +138,13 @@ class url_attribute_type_test(unittest.TestCase):
     def test_fragement_type(self):
         test_url = Url("")
         self.assertIsInstance(test_url.__fragment__, str)
+
+    def test_hostname_type(self):
+        test_url = Url("")
+        self.assertIsInstance(test_url.__hostname__, str)
+
+    def test_scheme_type(self):
+        test_url = Url("")
+        self.assertIsInstance(test_url.__scheme__, str)
+
 

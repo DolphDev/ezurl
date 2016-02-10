@@ -47,7 +47,7 @@ class Url(object):
         return urlparse(str(self))
 
     @property
-    def scheme(self):
+    def schemes(self):
         return self.url.scheme
 
     @property
@@ -86,7 +86,7 @@ class Url(object):
         return urlunparse((self.__scheme__,
                         self.__hostname__,
                         self._page_gen(),
-                        "",
+                        str(),
                         self._query_gen(),
                         self.__fragment__))
 
@@ -102,6 +102,12 @@ class Url(object):
     def _query_gen(self, safe="+"):
         """Generates The String for queries"""
         return urlencode(self.__query__, safe=safe, querydelimiter=self.__querydelimiter__)
+
+    def hostname(self, hostname):
+        self.__hostname__ = hostname
+
+    def scheme(self, scheme):
+        self.__scheme__ = scheme
 
     def page(self, *args):
         """
@@ -139,6 +145,6 @@ class Url(object):
         """
         Allows for fragments at the end of the url
         """
-        self.fragmenttrack = text
+        self.__fragment__ = text
         return self
 

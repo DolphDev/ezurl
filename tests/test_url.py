@@ -31,6 +31,19 @@ class url_correct_test(unittest.TestCase):
         test_url.page("WORLD")
         self.assertEqual(str(test_url), "https://myurl.com/HELLO/WORLD")
 
+    def test_url_hostname(self):
+        test_url = Url("myurl.com")
+        self.assertEqual(str(test_url), "https://myurl.com")
+        test_url.hostname("mynewurl.com")
+        self.assertEqual(str(test_url), "https://mynewurl.com")
+
+    def test_url_scheme(self):
+        test_url = Url("myurl.com")
+        self.assertEqual(str(test_url), "https://myurl.com")
+        test_url.scheme("http")
+        self.assertEqual(str(test_url), "http://myurl.com")
+
+
     def test_url___query___multi_query(self):
         test_url = Url("myurl.com").query(a="TEST", b="TEST")
         self.assertEqual(dict(test_url.__query__), {"a":"TEST", "b":"TEST"})
@@ -97,7 +110,7 @@ class url_properties_test(unittest.TestCase):
 
     def test_scheme_equalto(self):
         test_url = Url("myurl.com")
-        self.assertEqual(test_url.scheme, test_url.__scheme__, "https")
+        self.assertEqual(test_url.schemes, test_url.__scheme__, "https")
 
     def test_page_equalto(self):
         test_url = Url("myurl.com").page("HELLO")

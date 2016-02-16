@@ -105,9 +105,11 @@ class Url(object):
 
     def hostname(self, hostname):
         self.__hostname__ = hostname
+        return self
 
     def scheme(self, scheme):
         self.__scheme__ = scheme
+        return self
 
     def page(self, *args):
         """
@@ -117,7 +119,7 @@ class Url(object):
             self.__pages__.append(arg)
         return self
 
-    def query(self, listdelimiter="+", safe="",**kwargs):
+    def query(self, listdelimiter="+", safe="", **kwargs):
         """
         Url queries
 

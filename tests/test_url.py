@@ -123,8 +123,6 @@ class url_properties_test(unittest.TestCase):
 
 
 
-
-
 class url_attribute_type_test(unittest.TestCase):
 
     def test___query___type(self):

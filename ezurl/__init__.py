@@ -31,6 +31,7 @@ class Url(object):
         :param querydelimiter: What the query delimiter is for this URL
 
         """
+        self.__safe__ = "+"
         self.__scheme__ = scheme
         self.__hostname__ = hostname
         self.__pages__ = list()
@@ -45,6 +46,14 @@ class Url(object):
     @property
     def url(self):
         return urlparse(str(self))
+
+    @property
+    def safe(self):
+        return self.__safe__
+
+    @safe.setter
+    def safe(self, v):
+        self.__safe__ = v
 
     @property
     def schemes(self):
@@ -99,9 +108,9 @@ class Url(object):
             track += "/{page}".format(page=page)
         return track
 
-    def _query_gen(self, safe="+"):
+    def _query_gen(self):
         """Generates The String for queries"""
-        return urlencode(self.__query__, safe=safe, querydelimiter=self.__querydelimiter__)
+        return urlencode(self.__query__, safe=self.safe, querydelimiter=self.__querydelimiter__)
 
     def hostname(self, hostname):
         self.__hostname__ = hostname
@@ -131,7 +140,7 @@ class Url(object):
         after another or vice versa.
 
         """
-
+        safe = safe if safe else self.safe
         for arg in list(kwargs.keys()):
             if (isinstance(kwargs[arg], list)
                     or isinstance(kwargs[arg], tuple)

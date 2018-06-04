@@ -1,16 +1,10 @@
 #!/usr/bin/env python
 """
-
-   ___       __     __                 
-  / _ \___  / /__  / /  __ _  ___ ____ 
- / // / _ \/ / _ \/ _ \/  ' \/ _ `/ _ \
-/____/\___/_/ .__/_//_/_/_/_/\_,_/_//_/
-           /_/                         
-
+  
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Dolphman
+Copyright (c) 2015-2018 Joshua W
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,9 +29,9 @@ from setuptools import setup
 setup(name='ezurl',
       version="0.1.3.25",
       description='URL Generation for Python',
-      author='Joshua Walters',
-      author_email='therealdolphman@gmail.com',
-      url='https://github.com/Dolphman/ezurl',
+      author='Joshua W',
+      author_email='DolphDevGithub@gmail.com',
+      url='https://github.com/DolphDev/ezurl',
       packages=['ezurl'],
       keywords=['URL Generation', 'Python URL generation', 'Python URL'],
       classifiers=["License :: OSI Approved :: MIT License",

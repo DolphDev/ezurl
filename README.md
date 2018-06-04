@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/DolphDev/ezurl.svg?branch=master)](https://travis-ci.org/Dolphman/ezurl) [![Documentation Status](https://readthedocs.org/projects/ezurl/badge/?version=latest)](http://ezurl.readthedocs.org/en/latest/?badge=latest)
+[![Build Status](https://travis-ci.org/DolphDev/ezurl.svg?branch=master)](https://travis-ci.org/DolphDev/ezurl) [![Documentation Status](https://readthedocs.org/projects/ezurl/badge/?version=latest)](http://ezurl.readthedocs.org/en/latest/?badge=latest)
 
 ezurl
 ---

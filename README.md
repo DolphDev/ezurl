@@ -5,7 +5,7 @@ ezurl
 
 Easy URL generation for Python
 
-This Library is simply for dynamically generating URLs. This Library was originally included in my WeThePeople Module, however I thought it would be better for it to be a seperate library.
+This Library is simply for dynamically generating URLs.
 
 ezurl allows simple stuff like this
 
@@ -29,7 +29,7 @@ It also supports one liners! (Using the example above)
     from ezurl import Url
     print(Url("example.com").page("api", "list", "ExampleObject").query(name=["Cool", "Cat"], createdby="Dolphin", ispublic="true"))
 
-ezurl powers [pynationstates](https://github.com/Dolphman/Pynationstates) and [WeThePeople](https://github.com/Dolphman/wethepeople)
+ezurl powers [pynationstates](https://github.com/Dolphdev/Pynationstates) via [nsapiwrapper](https://github.com/Dolphdev/nsapiwrapper)
 
 
 ######Note: This is not for URL validation nor URL Manipulation. This is simply a url generation library.
